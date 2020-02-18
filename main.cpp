@@ -1,9 +1,12 @@
 #include <iostream>
 
+#include "KsiazkaAdresowa.h"
+
 using namespace std;
 
 int main()
 {
-    /* code */
+    KsiazkaAdresowa ksiazkaAdresowa;
+
     return 0;
 }
