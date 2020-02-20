@@ -14,7 +14,6 @@ class PlikZUzytkownikami
 {
     const string nazwaPlikuZUzytkownikami;
     MetodyPomocnicze metodyPomocnicze;
-    fstream plikTekstowy;
 
     bool czyPlikJestPusty();
     string zamienDaneUzytkownikaNaLinieZDanymiOddzielonaPionowymiKreskami(Uzytkownik uzytkownik);
