@@ -14,7 +14,6 @@ public:
     {
         uzytkownikMenedzer.wczytajUzytkownikowZpliku();
     }
-    string pobierzNazwePlikuZUzytkownikami();
     void rejestracjaUzytkownika();
     void wypiszWszystkichUzytkownikow();
 };
