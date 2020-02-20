@@ -25,6 +25,8 @@ class UzytkownikMenedzer
 public:
     UzytkownikMenedzer(string nazwaPlikuZUzytkownikami) : plikZUzutkownikami(nazwaPlikuZUzytkownikami) {}
     void rejestracjaUzytkownika();
+    int logowanieUzytkownika(vector<Uzytkownik> &uzytkownicy);
+    int pobierzIdZalogowanegoUzytkownika();
     void wypiszWszystkichUzytkownikow();
     void wczytajUzytkownikowZpliku();
 };
