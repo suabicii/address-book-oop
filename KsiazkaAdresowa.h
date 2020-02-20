@@ -15,5 +15,6 @@ public:
         uzytkownikMenedzer.wczytajUzytkownikowZpliku();
     }
     void rejestracjaUzytkownika();
+    int logowanieUzytkownika();
     void wypiszWszystkichUzytkownikow();
 };

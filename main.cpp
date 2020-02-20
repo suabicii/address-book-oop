@@ -8,6 +8,7 @@ int main()
 {
     KsiazkaAdresowa ksiazkaAdresowa("Uzytkownicy.txt");
     char wybor;
+    int idZalogowanegoUzytkownika;
 
     while (1)
     {
@@ -27,6 +28,9 @@ int main()
             ksiazkaAdresowa.rejestracjaUzytkownika();
             break;
         case '2':
+            idZalogowanegoUzytkownika = ksiazkaAdresowa.logowanieUzytkownika();
+            cout << "idZalogowanegoUzytkownika = " << idZalogowanegoUzytkownika << endl;
+            system("pause");
             break;
         case '3':
             exit(0);
