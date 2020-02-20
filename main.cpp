@@ -9,6 +9,7 @@ int main()
     KsiazkaAdresowa ksiazkaAdresowa("Uzytkownicy.txt");
     char wybor;
     int idZalogowanegoUzytkownika;
+    int idOstatniegoAdresata;
 
     while (1)
     {
@@ -58,7 +59,9 @@ int main()
             switch (wybor)
             {
             case '1':
-                /* code */
+                idOstatniegoAdresata = ksiazkaAdresowa.dodajAdresata();
+                cout << "idOstatniegoAdresata = " << idOstatniegoAdresata << endl;
+                system("pause");
                 break;
             case '2':
                 /* code */
