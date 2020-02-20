@@ -31,8 +31,6 @@ int main()
                 break;
             case '2':
                 idZalogowanegoUzytkownika = ksiazkaAdresowa.logowanieUzytkownika();
-                cout << "idZalogowanegoUzytkownika = " << idZalogowanegoUzytkownika << endl;
-                system("pause");
                 break;
             case '3':
                 exit(0);
