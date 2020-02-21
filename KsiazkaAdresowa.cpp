@@ -12,5 +12,10 @@ void KsiazkaAdresowa::wypiszWszystkichUzytkownikow()
 
 int KsiazkaAdresowa::logowanieUzytkownika()
 {
-    return uzytkownikMenedzer.pobierzIdZalogowanegoUzytkownika();
+    return uzytkownikMenedzer.ustawIdZalogowanegoUzytkownika();
+}
+
+int KsiazkaAdresowa::dodajAdresata()
+{
+    return uzytkownikMenedzer.pobierzIdOstatniegoAdresata();
 }

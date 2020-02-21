@@ -112,8 +112,22 @@ int UzytkownikMenedzer::logowanieUzytkownika(vector<Uzytkownik> &uzytkownicy)
     return 0;
 }
 
-int UzytkownikMenedzer::pobierzIdZalogowanegoUzytkownika()
+int UzytkownikMenedzer::ustawIdZalogowanegoUzytkownika()
 {
     idZalogowanegoUzytkownika = logowanieUzytkownika(uzytkownicy);
     return idZalogowanegoUzytkownika;
+}
+
+int UzytkownikMenedzer::pobierzIdOstatniegoAdresata()
+{
+    int idOstatniegoAdresata;
+    if (!adresaci.empty())
+    {
+        idOstatniegoAdresata = ksiazkaAdresowaMenedzer.dodajAdresata(adresaci, idZalogowanegoUzytkownika, adresaci[adresaci.size() - 1].pobierzId());
+    }
+    else
+    {
+        idOstatniegoAdresata = ksiazkaAdresowaMenedzer.dodajAdresata(adresaci, idZalogowanegoUzytkownika, 0);
+    }
+    return idOstatniegoAdresata;
 }

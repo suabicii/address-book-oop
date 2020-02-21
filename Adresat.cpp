@@ -5,6 +5,11 @@ void Adresat::ustawId(int noweId)
     id = noweId;
 }
 
+void Adresat::ustawIdUzytkownika(int noweIdUzytkownika)
+{
+    idUzytkownika = noweIdUzytkownika;
+}
+
 void Adresat::ustawImie(string noweImie)
 {
     imie = noweImie;
@@ -33,6 +38,11 @@ void Adresat::ustawAdres(string nowyAdres)
 int Adresat::pobierzId()
 {
     return id;
+}
+
+int Adresat::pobierzIdUzytkownika()
+{
+    return idUzytkownika;
 }
 
 string Adresat::pobierzImie()

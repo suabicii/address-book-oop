@@ -9,6 +9,7 @@ int main()
     KsiazkaAdresowa ksiazkaAdresowa("Uzytkownicy.txt");
     char wybor;
     int idZalogowanegoUzytkownika;
+    int idOstatniegoAdresata;
 
     while (1)
     {
@@ -47,10 +48,10 @@ int main()
             cout << " >>> MENU UZYTKOWNIKA <<<" << endl;
             cout << "---------------------------" << endl;
             cout << "1. Dodaj adresata" << endl;
-            cout << "3. Wyswietl adresatow" << endl;
+            cout << "2. Wyswietl adresatow" << endl;
             cout << "---------------------------" << endl;
-            cout << "4. Zmien haslo" << endl;
-            cout << "5. Wyloguj sie" << endl;
+            cout << "3. Zmien haslo" << endl;
+            cout << "4. Wyloguj sie" << endl;
             cout << "---------------------------" << endl;
             cout << "Twoj wybor: ";
             cin >> wybor;
@@ -58,7 +59,9 @@ int main()
             switch (wybor)
             {
             case '1':
-                /* code */
+                idOstatniegoAdresata = ksiazkaAdresowa.dodajAdresata();
+                cout << "idOstatniegoAdresata = " << idOstatniegoAdresata << endl;
+                system("pause");
                 break;
             case '2':
                 /* code */
@@ -67,9 +70,6 @@ int main()
                 /* code */
                 break;
             case '4':
-                /* code */
-                break;
-            case '5':
                 idZalogowanegoUzytkownika = 0;
                 break;
             default:

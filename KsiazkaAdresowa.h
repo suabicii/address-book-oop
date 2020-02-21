@@ -2,6 +2,7 @@
 
 #include "UzytkownikMenedzer.h"
 #include "PlikZUzytkownikami.h"
+#include "KsiazkaAdresowaMenedzer.h"
 
 using namespace std;
 
@@ -17,4 +18,5 @@ public:
     void rejestracjaUzytkownika();
     int logowanieUzytkownika();
     void wypiszWszystkichUzytkownikow();
+    int dodajAdresata();
 };
