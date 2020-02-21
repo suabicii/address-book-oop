@@ -11,6 +11,7 @@ int KsiazkaAdresowaMenedzer::dodajAdresata(vector<Adresat> &adresaci, int idZalo
     string imie, nazwisko, nrTel, email, adres;
 
     adresat.ustawId(idOstatniegoAdresata + 1);
+    adresat.ustawIdUzytkownika(idZalogowanegoUzytkownika);
 
     cout << "Podaj imie: ";
     cin >> imie;
@@ -33,6 +34,7 @@ int KsiazkaAdresowaMenedzer::dodajAdresata(vector<Adresat> &adresaci, int idZalo
     getline(cin, adres);
     adresat.ustawAdres(adres);
 
+    plikZAdresatami.dopiszAdresataDoPliku(adresat);
     adresaci.push_back(adresat);
 
     cout << "Adresat zostal dodany" << endl;

@@ -5,7 +5,9 @@
 #include <vector>
 #include <string>
 #include <Windows.h>
+
 #include "Adresat.h"
+#include "PlikZAdresatami.h"
 
 using namespace std;
 
@@ -13,6 +15,7 @@ class KsiazkaAdresowaMenedzer
 {
     vector<Adresat> adresaci;
     int idOstatniegoAdresata;
+    PlikZAdresatami plikZAdresatami;
 
 public:
     KsiazkaAdresowaMenedzer();
