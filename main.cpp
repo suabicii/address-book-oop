@@ -61,8 +61,6 @@ int main()
             {
             case '1':
                 idOstatniegoAdresata = ksiazkaAdresowa.dodajAdresata();
-                cout << "idOstatniegoAdresata = " << idOstatniegoAdresata << endl;
-                system("pause");
                 break;
             case '2':
                 /* code */
