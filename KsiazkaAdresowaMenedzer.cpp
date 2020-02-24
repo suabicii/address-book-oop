@@ -62,7 +62,7 @@ void KsiazkaAdresowaMenedzer::wyswietlWszystkichAdresatow(vector<Adresat> &adres
     }
     else
     {
-        cout << "------------------------------------" << endl;
+        cout << "----------------------------------------------------------------------------------------------------------------------------" << endl;
         for (int i = 0; i < adresaci.size(); i++)
         {
             cout << "Id: " << adresaci[i].pobierzId() << "|";
@@ -71,7 +71,7 @@ void KsiazkaAdresowaMenedzer::wyswietlWszystkichAdresatow(vector<Adresat> &adres
             cout << "Nr tel.: " << adresaci[i].pobierzNrTel() << "|";
             cout << "E-mail: " << adresaci[i].pobierzEmail() << "|";
             cout << "Adres: " << adresaci[i].pobierzAdres() << "|" << endl;
-            cout << "------------------------------------" << endl;
+            cout << "----------------------------------------------------------------------------------------------------------------------------" << endl;
         }
         system("pause");
     }
