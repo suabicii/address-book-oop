@@ -27,10 +27,13 @@ class UzytkownikMenedzer
     bool czyIstniejeLogin(string login);
 
 public:
-    UzytkownikMenedzer(string nazwaPlikuZUzytkownikami) : plikZUzutkownikami(nazwaPlikuZUzytkownikami) {}
+    UzytkownikMenedzer(string nazwaPlikuZUzytkownikami) : plikZUzutkownikami(nazwaPlikuZUzytkownikami)
+    {
+    }
     void rejestracjaUzytkownika();
     int logowanieUzytkownika(vector<Uzytkownik> &uzytkownicy);
     int wylogowanieUzytkownika();
+    void zmianaHasla();
     int ustawIdZalogowanegoUzytkownika();
     int pobierzIdOstatniegoAdresata();
     int pobierzIdOstatniegoAdresataZPliku();

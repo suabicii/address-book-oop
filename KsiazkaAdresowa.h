@@ -20,6 +20,7 @@ public:
     int logowanieUzytkownika();
     int wylogowanieUzytkownika();
     void wypiszWszystkichUzytkownikow();
+    void zmienHaslo();
     int dodajAdresata();
     int wczytajAdresatowZPliku();
     void wypiszWszystkichAdresatow();
