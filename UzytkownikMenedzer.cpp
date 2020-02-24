@@ -142,7 +142,14 @@ int UzytkownikMenedzer::pobierzIdOstatniegoAdresata()
 int UzytkownikMenedzer::pobierzIdOstatniegoAdresataZPliku()
 {
     int idOstatniegoAdresata;
-    idOstatniegoAdresata = ksiazkaAdresowaMenedzer.wczytajAdresatowZPliku(adresaci, idZalogowanegoUzytkownika);
+    if (adresaci.empty())
+    {
+        idOstatniegoAdresata = ksiazkaAdresowaMenedzer.wczytajAdresatowZPliku(adresaci, idZalogowanegoUzytkownika);
+    }
+    else
+    {
+        idOstatniegoAdresata = ksiazkaAdresowaMenedzer.pobierzIdOstatniegoAdresata();
+    }
 
     return idOstatniegoAdresata;
 }
