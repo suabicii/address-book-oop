@@ -8,8 +8,8 @@ int main()
 {
     KsiazkaAdresowa ksiazkaAdresowa("Uzytkownicy.txt");
     char wybor;
-    int idZalogowanegoUzytkownika;
-    int idOstatniegoAdresata;
+    int idZalogowanegoUzytkownika = 0;
+    int idOstatniegoAdresata = 0;
 
     while (1)
     {
