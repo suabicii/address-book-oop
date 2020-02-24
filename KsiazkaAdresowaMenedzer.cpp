@@ -52,3 +52,27 @@ int KsiazkaAdresowaMenedzer::wczytajAdresatowZPliku(vector<Adresat> &adresaci, i
 {
     return idOstatniegoAdresata = plikZAdresatami.wczytajAdresatowZpliku(adresaci, idZalogowanegoUzytkownika);
 }
+
+void KsiazkaAdresowaMenedzer::wyswietlWszystkichAdresatow(vector<Adresat> &adresaci)
+{
+    if (adresaci.empty())
+    {
+        cout << "Ksiazka adresowa jest pusta" << endl;
+        Sleep(1500);
+    }
+    else
+    {
+        cout << "------------------------------------" << endl;
+        for (int i = 0; i < adresaci.size(); i++)
+        {
+            cout << "Id: " << adresaci[i].pobierzId() << "|";
+            cout << "Imie: " << adresaci[i].pobierzImie() << "|";
+            cout << "Nazwisko: " << adresaci[i].pobierzNazwisko() << "|";
+            cout << "Nr tel.: " << adresaci[i].pobierzNrTel() << "|";
+            cout << "E-mail: " << adresaci[i].pobierzEmail() << "|";
+            cout << "Adres: " << adresaci[i].pobierzAdres() << "|" << endl;
+            cout << "------------------------------------" << endl;
+        }
+        system("pause");
+    }
+}

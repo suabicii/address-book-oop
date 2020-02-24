@@ -21,7 +21,7 @@ public:
     KsiazkaAdresowaMenedzer();
     int wczytajAdresatowZPliku(vector<Adresat> &adresaci, int idZalogowanegoUzytkownika);
     int dodajAdresata(vector<Adresat> &adresaci, int idZalogowanegoUzytkownika, int idOstatniegoAdresata);
-    void wyswietlWszystkichAdresatow(vector<Adresat> &adresaci, int idZalogowanegoUzytkownika);
+    void wyswietlWszystkichAdresatow(vector<Adresat> &adresaci);
     int pobierzIdOstatniegoAdresata();
 };
 

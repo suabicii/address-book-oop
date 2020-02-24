@@ -34,6 +34,7 @@ public:
     int pobierzIdOstatniegoAdresata();
     int pobierzIdOstatniegoAdresataZPliku();
     void wypiszWszystkichUzytkownikow();
+    void wypiszWszystkichAdresatow();
     void wczytajUzytkownikowZpliku();
 };
 

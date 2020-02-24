@@ -24,3 +24,8 @@ int KsiazkaAdresowa::wczytajAdresatowZPliku()
 {
     return uzytkownikMenedzer.pobierzIdOstatniegoAdresataZPliku();
 }
+
+void KsiazkaAdresowa::wypiszWszystkichAdresatow()
+{
+    uzytkownikMenedzer.wypiszWszystkichAdresatow();
+}
