@@ -130,7 +130,7 @@ int UzytkownikMenedzer::pobierzIdOstatniegoAdresata()
     int idOstatniegoAdresata;
     if (!adresaci.empty())
     {
-        idOstatniegoAdresata = ksiazkaAdresowaMenedzer.dodajAdresata(adresaci, idZalogowanegoUzytkownika, adresaci[adresaci.size() - 1].pobierzId());
+        idOstatniegoAdresata = ksiazkaAdresowaMenedzer.dodajAdresata(adresaci, idZalogowanegoUzytkownika, pobierzIdOstatniegoAdresataZPliku());
     }
     else
     {
