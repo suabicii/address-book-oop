@@ -32,6 +32,7 @@ int main()
                 break;
             case '2':
                 idZalogowanegoUzytkownika = ksiazkaAdresowa.logowanieUzytkownika();
+                idOstatniegoAdresata = ksiazkaAdresowa.wczytajAdresatowZPliku();
                 break;
             case '3':
                 exit(0);

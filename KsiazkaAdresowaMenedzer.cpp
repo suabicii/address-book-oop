@@ -48,7 +48,7 @@ int KsiazkaAdresowaMenedzer::pobierzIdOstatniegoAdresata()
     return idOstatniegoAdresata;
 }
 
-void KsiazkaAdresowaMenedzer::wczytajAdresatowZPliku(vector<Adresat> &adresaci)
+int KsiazkaAdresowaMenedzer::wczytajAdresatowZPliku(vector<Adresat> &adresaci, int idZalogowanegoUzytkownika)
 {
-    // miejsce na kod
+    return idOstatniegoAdresata = plikZAdresatami.wczytajAdresatowZpliku(adresaci, idZalogowanegoUzytkownika);
 }

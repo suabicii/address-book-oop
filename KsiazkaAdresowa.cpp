@@ -19,3 +19,8 @@ int KsiazkaAdresowa::dodajAdresata()
 {
     return uzytkownikMenedzer.pobierzIdOstatniegoAdresata();
 }
+
+int KsiazkaAdresowa::wczytajAdresatowZPliku()
+{
+    return uzytkownikMenedzer.pobierzIdOstatniegoAdresataZPliku();
+}

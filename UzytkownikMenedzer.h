@@ -32,6 +32,7 @@ public:
     int logowanieUzytkownika(vector<Uzytkownik> &uzytkownicy);
     int ustawIdZalogowanegoUzytkownika();
     int pobierzIdOstatniegoAdresata();
+    int pobierzIdOstatniegoAdresataZPliku();
     void wypiszWszystkichUzytkownikow();
     void wczytajUzytkownikowZpliku();
 };
