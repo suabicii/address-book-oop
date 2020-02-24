@@ -112,6 +112,13 @@ int UzytkownikMenedzer::logowanieUzytkownika(vector<Uzytkownik> &uzytkownicy)
     return 0;
 }
 
+int UzytkownikMenedzer::wylogowanieUzytkownika()
+{
+    adresaci.clear();
+    idZalogowanegoUzytkownika = 0;
+    return idZalogowanegoUzytkownika;
+}
+
 int UzytkownikMenedzer::ustawIdZalogowanegoUzytkownika()
 {
     idZalogowanegoUzytkownika = logowanieUzytkownika(uzytkownicy);
