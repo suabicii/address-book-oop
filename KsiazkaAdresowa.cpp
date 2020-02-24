@@ -15,6 +15,11 @@ int KsiazkaAdresowa::logowanieUzytkownika()
     return uzytkownikMenedzer.ustawIdZalogowanegoUzytkownika();
 }
 
+void KsiazkaAdresowa::zmienHaslo()
+{
+    uzytkownikMenedzer.zmianaHasla();
+}
+
 int KsiazkaAdresowa::wylogowanieUzytkownika()
 {
     return uzytkownikMenedzer.wylogowanieUzytkownika();

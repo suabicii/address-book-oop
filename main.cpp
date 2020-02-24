@@ -66,7 +66,7 @@ int main()
                 ksiazkaAdresowa.wypiszWszystkichAdresatow();
                 break;
             case '3':
-                /* code */
+                ksiazkaAdresowa.zmienHaslo();
                 break;
             case '4':
                 idZalogowanegoUzytkownika = ksiazkaAdresowa.wylogowanieUzytkownika();
