@@ -19,7 +19,7 @@ class KsiazkaAdresowaMenedzer
 
 public:
     KsiazkaAdresowaMenedzer();
-    void wczytajAdresatowZPliku(vector<Adresat> &adresaci);
+    int wczytajAdresatowZPliku(vector<Adresat> &adresaci, int idZalogowanegoUzytkownika);
     int dodajAdresata(vector<Adresat> &adresaci, int idZalogowanegoUzytkownika, int idOstatniegoAdresata);
     void wyswietlWszystkichAdresatow(vector<Adresat> &adresaci, int idZalogowanegoUzytkownika);
     int pobierzIdOstatniegoAdresata();

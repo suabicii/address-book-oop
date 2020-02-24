@@ -16,11 +16,14 @@ class PlikZAdresatami
 
     bool czyPlikJestPusty();
     string zamienDaneAdresataNaLinieZDanymiOddzielonymiPionowymiKreskami(Adresat adresat);
+    int pobierzIdUzytkownikaZDanychOddzielonychPionowymiKreskami(string daneJednegoAdresataOddzielonePionowymiKreskami);
+    Adresat pobierzDaneAdresata(string daneAdresataOddzielonePionowymiKreskami);
+    int pobierzIdAdresataZDanychOddzielonychPionowymiKreskami(string daneJednegoAdresataOddzielonePionowymiKreskami);
 
 public:
     PlikZAdresatami();
     void dopiszAdresataDoPliku(Adresat adresat);
-    vector<Adresat> wczytajAdresatowZpliku();
+    int wczytajAdresatowZpliku(vector<Adresat> &adresaci, int idZalogowanegoUzytkownika);
 };
 
 #endif

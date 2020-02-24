@@ -32,6 +32,7 @@ int main()
                 break;
             case '2':
                 idZalogowanegoUzytkownika = ksiazkaAdresowa.logowanieUzytkownika();
+                idOstatniegoAdresata = ksiazkaAdresowa.wczytajAdresatowZPliku();
                 break;
             case '3':
                 exit(0);
@@ -60,8 +61,6 @@ int main()
             {
             case '1':
                 idOstatniegoAdresata = ksiazkaAdresowa.dodajAdresata();
-                cout << "idOstatniegoAdresata = " << idOstatniegoAdresata << endl;
-                system("pause");
                 break;
             case '2':
                 /* code */
