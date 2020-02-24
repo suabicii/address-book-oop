@@ -63,7 +63,7 @@ int main()
                 idOstatniegoAdresata = ksiazkaAdresowa.dodajAdresata();
                 break;
             case '2':
-                /* code */
+                ksiazkaAdresowa.wypiszWszystkichAdresatow();
                 break;
             case '3':
                 /* code */
