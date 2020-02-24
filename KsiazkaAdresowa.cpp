@@ -15,6 +15,11 @@ int KsiazkaAdresowa::logowanieUzytkownika()
     return uzytkownikMenedzer.ustawIdZalogowanegoUzytkownika();
 }
 
+int KsiazkaAdresowa::wylogowanieUzytkownika()
+{
+    return uzytkownikMenedzer.wylogowanieUzytkownika();
+}
+
 int KsiazkaAdresowa::dodajAdresata()
 {
     return uzytkownikMenedzer.pobierzIdOstatniegoAdresata();

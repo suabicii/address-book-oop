@@ -18,6 +18,7 @@ public:
     }
     void rejestracjaUzytkownika();
     int logowanieUzytkownika();
+    int wylogowanieUzytkownika();
     void wypiszWszystkichUzytkownikow();
     int dodajAdresata();
     int wczytajAdresatowZPliku();

@@ -1,10 +1,5 @@
 #include "KsiazkaAdresowaMenedzer.h"
 
-KsiazkaAdresowaMenedzer::KsiazkaAdresowaMenedzer()
-{
-    idOstatniegoAdresata = 0;
-}
-
 int KsiazkaAdresowaMenedzer::dodajAdresata(vector<Adresat> &adresaci, int idZalogowanegoUzytkownika, int idOstatniegoAdresata)
 {
     Adresat adresat;

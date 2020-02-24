@@ -30,6 +30,7 @@ public:
     UzytkownikMenedzer(string nazwaPlikuZUzytkownikami) : plikZUzutkownikami(nazwaPlikuZUzytkownikami) {}
     void rejestracjaUzytkownika();
     int logowanieUzytkownika(vector<Uzytkownik> &uzytkownicy);
+    int wylogowanieUzytkownika();
     int ustawIdZalogowanegoUzytkownika();
     int pobierzIdOstatniegoAdresata();
     int pobierzIdOstatniegoAdresataZPliku();

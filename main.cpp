@@ -8,8 +8,8 @@ int main()
 {
     KsiazkaAdresowa ksiazkaAdresowa("Uzytkownicy.txt");
     char wybor;
-    int idZalogowanegoUzytkownika;
-    int idOstatniegoAdresata;
+    int idZalogowanegoUzytkownika = 0;
+    int idOstatniegoAdresata = 0;
 
     while (1)
     {
@@ -69,7 +69,7 @@ int main()
                 /* code */
                 break;
             case '4':
-                idZalogowanegoUzytkownika = 0;
+                idZalogowanegoUzytkownika = ksiazkaAdresowa.wylogowanieUzytkownika();
                 break;
             default:
                 cout << "Nie ma takiej opcji w menu!" << endl;
