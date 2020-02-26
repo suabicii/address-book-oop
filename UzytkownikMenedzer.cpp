@@ -67,12 +67,7 @@ void UzytkownikMenedzer::wypiszWszystkichUzytkownikow()
     }
 }
 
-void UzytkownikMenedzer::wczytajUzytkownikowZpliku()
-{
-    uzytkownicy = plikZUzutkownikami.wczytajUzytkownikowZpliku();
-}
-
-int UzytkownikMenedzer::logowanieUzytkownika(vector<Uzytkownik> &uzytkownicy)
+int UzytkownikMenedzer::logowanieUzytkownika()
 {
     Uzytkownik uzytkownik;
     string login = "", haslo = "";
@@ -97,7 +92,8 @@ int UzytkownikMenedzer::logowanieUzytkownika(vector<Uzytkownik> &uzytkownicy)
                          << "Zalogowales sie." << endl
                          << endl;
                     system("pause");
-                    return itr->pobierzId();
+                    idZalogowanegoUzytkownika = itr->pobierzId();
+                    return idZalogowanegoUzytkownika;
                 }
             }
             cout << "Wprowadzono 3 razy bledne haslo." << endl;
@@ -136,12 +132,6 @@ void UzytkownikMenedzer::zmianaHasla()
         }
     }
     plikZUzutkownikami.zapiszWszystkichUzytkownikowDoPliku(uzytkownicy);
-}
-
-int UzytkownikMenedzer::ustawIdZalogowanegoUzytkownika()
-{
-    idZalogowanegoUzytkownika = logowanieUzytkownika(uzytkownicy);
-    return idZalogowanegoUzytkownika;
 }
 
 int UzytkownikMenedzer::pobierzIdOstatniegoAdresata()

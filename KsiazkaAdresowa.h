@@ -14,7 +14,6 @@ class KsiazkaAdresowa
 public:
     KsiazkaAdresowa(string nazwaPlikuZUzytkownikami) : uzytkownikMenedzer(nazwaPlikuZUzytkownikami)
     {
-        uzytkownikMenedzer.wczytajUzytkownikowZpliku();
     }
     void rejestracjaUzytkownika();
     int logowanieUzytkownika();
