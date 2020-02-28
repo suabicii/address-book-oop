@@ -1,13 +1,14 @@
 #include "KsiazkaAdresowaMenedzer.h"
 
-int KsiazkaAdresowaMenedzer::dodajAdresata(vector<Adresat> &adresaci, int idZalogowanegoUzytkownika, int idOstatniegoAdresata)
+void KsiazkaAdresowaMenedzer::dodajAdresata()
 {
     Adresat adresat;
     string imie, nazwisko, nrTel, email, adres;
 
-    adresat.ustawId(idOstatniegoAdresata + 1);
-    adresat.ustawIdUzytkownika(idZalogowanegoUzytkownika);
-
+    adresat.ustawId(plikZAdresatami.pobierzIdOstatniegoAdresata() + 1);
+    adresat.ustawIdUzytkownika(ID_ZALOGOWANEGO_UZYTKOWNIKA);
+    // zapisz wprowadzanie danych do odzielnej funkcji
+    // if (plikZAdresatami.dopiszAdresataDoPliku(adresat))
     cout << "Podaj imie: ";
     cin >> imie;
     adresat.ustawImie(imie);
@@ -34,8 +35,6 @@ int KsiazkaAdresowaMenedzer::dodajAdresata(vector<Adresat> &adresaci, int idZalo
 
     cout << "Adresat zostal dodany" << endl;
     Sleep(1500);
-
-    return ++idOstatniegoAdresata;
 }
 
 int KsiazkaAdresowaMenedzer::pobierzIdOstatniegoAdresata()
@@ -43,12 +42,7 @@ int KsiazkaAdresowaMenedzer::pobierzIdOstatniegoAdresata()
     return idOstatniegoAdresata;
 }
 
-int KsiazkaAdresowaMenedzer::wczytajAdresatowZPliku(vector<Adresat> &adresaci, int idZalogowanegoUzytkownika)
-{
-    return idOstatniegoAdresata = plikZAdresatami.wczytajAdresatowZpliku(adresaci, idZalogowanegoUzytkownika);
-}
-
-void KsiazkaAdresowaMenedzer::wyswietlWszystkichAdresatow(vector<Adresat> &adresaci)
+void KsiazkaAdresowaMenedzer::wyswietlWszystkichAdresatow()
 {
     if (adresaci.empty())
     {

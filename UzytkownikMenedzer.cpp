@@ -67,7 +67,7 @@ void UzytkownikMenedzer::wypiszWszystkichUzytkownikow()
     }
 }
 
-int UzytkownikMenedzer::logowanieUzytkownika()
+void UzytkownikMenedzer::logowanieUzytkownika()
 {
     Uzytkownik uzytkownik;
     string login = "", haslo = "";
@@ -93,26 +93,31 @@ int UzytkownikMenedzer::logowanieUzytkownika()
                          << endl;
                     system("pause");
                     idZalogowanegoUzytkownika = itr->pobierzId();
-                    return idZalogowanegoUzytkownika;
+                    return;
                 }
             }
             cout << "Wprowadzono 3 razy bledne haslo." << endl;
             system("pause");
-            return 0;
+            return;
         }
         itr++;
     }
     cout << "Nie ma uzytkownika z takim loginem" << endl
          << endl;
     system("pause");
-    return 0;
 }
 
-int UzytkownikMenedzer::wylogowanieUzytkownika()
+void UzytkownikMenedzer::wylogowanieUzytkownika()
 {
-    adresaci.clear();
     idZalogowanegoUzytkownika = 0;
-    return idZalogowanegoUzytkownika;
+}
+
+bool UzytkownikMenedzer::czyUzytkownikJestZalogowany()
+{
+    if (idZalogowanegoUzytkownika > 0)
+        return true;
+    else
+        return false;
 }
 
 void UzytkownikMenedzer::zmianaHasla()
@@ -134,36 +139,7 @@ void UzytkownikMenedzer::zmianaHasla()
     plikZUzutkownikami.zapiszWszystkichUzytkownikowDoPliku(uzytkownicy);
 }
 
-int UzytkownikMenedzer::pobierzIdOstatniegoAdresata()
+int UzytkownikMenedzer::pobierzIdZalogowanegoUzytkownika()
 {
-    int idOstatniegoAdresata;
-    if (!adresaci.empty())
-    {
-        idOstatniegoAdresata = ksiazkaAdresowaMenedzer.dodajAdresata(adresaci, idZalogowanegoUzytkownika, pobierzIdOstatniegoAdresataZPliku());
-    }
-    else
-    {
-        idOstatniegoAdresata = ksiazkaAdresowaMenedzer.dodajAdresata(adresaci, idZalogowanegoUzytkownika, 0);
-    }
-    return idOstatniegoAdresata;
-}
-
-int UzytkownikMenedzer::pobierzIdOstatniegoAdresataZPliku()
-{
-    int idOstatniegoAdresata;
-    if (adresaci.empty())
-    {
-        idOstatniegoAdresata = ksiazkaAdresowaMenedzer.wczytajAdresatowZPliku(adresaci, idZalogowanegoUzytkownika);
-    }
-    else
-    {
-        idOstatniegoAdresata = ksiazkaAdresowaMenedzer.pobierzIdOstatniegoAdresata();
-    }
-
-    return idOstatniegoAdresata;
-}
-
-void UzytkownikMenedzer::wypiszWszystkichAdresatow()
-{
-    ksiazkaAdresowaMenedzer.wyswietlWszystkichAdresatow(adresaci);
+    return idZalogowanegoUzytkownika;
 }

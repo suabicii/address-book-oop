@@ -9,18 +9,26 @@ using namespace std;
 class KsiazkaAdresowa
 {
     UzytkownikMenedzer uzytkownikMenedzer;
-    KsiazkaAdresowaMenedzer ksiazkaAdresowaMenedzer;
+    KsiazkaAdresowaMenedzer *ksiazkaAdresowaMenedzer;
+    const string NAZWA_PLIKU_Z_ADRESTATAMI;
 
 public:
-    KsiazkaAdresowa(string nazwaPlikuZUzytkownikami) : uzytkownikMenedzer(nazwaPlikuZUzytkownikami)
+    KsiazkaAdresowa(string nazwaPlikuZUzytkownikami, string nazwaPlikuZAdresatami)
+        : uzytkownikMenedzer(nazwaPlikuZUzytkownikami), NAZWA_PLIKU_Z_ADRESTATAMI(nazwaPlikuZAdresatami)
     {
+        ksiazkaAdresowaMenedzer = NULL;
+    }
+    ~KsiazkaAdresowa()
+    {
+        delete ksiazkaAdresowaMenedzer;
+        ksiazkaAdresowaMenedzer = NULL;
     }
     void rejestracjaUzytkownika();
-    int logowanieUzytkownika();
-    int wylogowanieUzytkownika();
+    void logowanieUzytkownika();
+    void wylogowanieUzytkownika();
     void wypiszWszystkichUzytkownikow();
     void zmienHaslo();
-    int dodajAdresata();
+    void dodajAdresata();
     int wczytajAdresatowZPliku();
     void wypiszWszystkichAdresatow();
 };

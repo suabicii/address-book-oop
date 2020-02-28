@@ -6,12 +6,12 @@ using namespace std;
 
 int main()
 {
-    KsiazkaAdresowa ksiazkaAdresowa("Uzytkownicy.txt");
+    KsiazkaAdresowa ksiazkaAdresowa("Uzytkownicy.txt", "Adresaci.txt");
     char wybor;
     int idZalogowanegoUzytkownika = 0;
     int idOstatniegoAdresata = 0;
 
-    while (1)
+    /* while (1)
     {
         if (idZalogowanegoUzytkownika == 0)
         {
@@ -77,7 +77,7 @@ int main()
                 break;
             }
         }
-    }
+    } */
 
     return 0;
 }
