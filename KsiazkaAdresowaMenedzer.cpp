@@ -51,17 +51,22 @@ void KsiazkaAdresowaMenedzer::wyswietlWszystkichAdresatow()
     }
     else
     {
-        cout << "----------------------------------------------------------------------------------------------------------------------------" << endl;
         for (int i = 0; i < adresaci.size(); i++)
         {
-            cout << "Id: " << adresaci[i].pobierzId() << "|";
-            cout << "Imie: " << adresaci[i].pobierzImie() << "|";
-            cout << "Nazwisko: " << adresaci[i].pobierzNazwisko() << "|";
-            cout << "Nr tel.: " << adresaci[i].pobierzNrTel() << "|";
-            cout << "E-mail: " << adresaci[i].pobierzEmail() << "|";
-            cout << "Adres: " << adresaci[i].pobierzAdres() << "|" << endl;
-            cout << "----------------------------------------------------------------------------------------------------------------------------" << endl;
+            wyswietlDaneAdresata(adresaci[i]);
         }
         system("pause");
     }
+}
+
+void KsiazkaAdresowaMenedzer::wyswietlDaneAdresata(Adresat adresat)
+{
+    cout << "----------------------------------------------------------------------------------------------------------------------------" << endl;
+    cout << "Id: " << adresat.pobierzId() << "|";
+    cout << "Imie: " << adresat.pobierzImie() << "|";
+    cout << "Nazwisko: " << adresat.pobierzNazwisko() << "|";
+    cout << "Nr tel.: " << adresat.pobierzNrTel() << "|";
+    cout << "E-mail: " << adresat.pobierzEmail() << "|";
+    cout << "Adres: " << adresat.pobierzAdres() << "|" << endl;
+    cout << "----------------------------------------------------------------------------------------------------------------------------" << endl;
 }

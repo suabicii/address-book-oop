@@ -50,4 +50,5 @@ int KsiazkaAdresowa::wczytajAdresatowZPliku()
 
 void KsiazkaAdresowa::wypiszWszystkichAdresatow()
 {
+    ksiazkaAdresowaMenedzer->wyswietlWszystkichAdresatow();
 }
