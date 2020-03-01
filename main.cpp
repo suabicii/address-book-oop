@@ -11,6 +11,9 @@ int main()
     int idZalogowanegoUzytkownika = 0;
     int idOstatniegoAdresata = 0;
 
+    ksiazkaAdresowa.logowanieUzytkownika();
+    ksiazkaAdresowa.dodajAdresata();
+
     /* while (1)
     {
         if (idZalogowanegoUzytkownika == 0)
