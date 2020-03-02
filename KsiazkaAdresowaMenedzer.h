@@ -13,14 +13,23 @@ using namespace std;
 
 class KsiazkaAdresowaMenedzer
 {
+    const int ID_ZALOGOWANEGO_UZYTKOWNIKA;
+
     vector<Adresat> adresaci;
     int idOstatniegoAdresata;
     PlikZAdresatami plikZAdresatami;
 
+    Adresat podajDaneNowegoAdresata();
+    void wyswietlDaneAdresata(Adresat adresat);
+
 public:
-    int wczytajAdresatowZPliku(vector<Adresat> &adresaci, int idZalogowanegoUzytkownika);
-    int dodajAdresata(vector<Adresat> &adresaci, int idZalogowanegoUzytkownika, int idOstatniegoAdresata);
-    void wyswietlWszystkichAdresatow(vector<Adresat> &adresaci);
+    KsiazkaAdresowaMenedzer(string nazwaPlikuZAdresatami, int idZalogowanegoUzytkownika)
+        : plikZAdresatami(nazwaPlikuZAdresatami), ID_ZALOGOWANEGO_UZYTKOWNIKA(idZalogowanegoUzytkownika)
+    {
+        adresaci = plikZAdresatami.wczytajAdresatowZpliku(ID_ZALOGOWANEGO_UZYTKOWNIKA);
+    }
+    void dodajAdresata();
+    void wyswietlWszystkichAdresatow();
     int pobierzIdOstatniegoAdresata();
 };
 

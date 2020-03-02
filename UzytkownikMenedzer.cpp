@@ -23,13 +23,13 @@ Uzytkownik UzytkownikMenedzer::podajDaneNowegoUzytkownika()
     do
     {
         cout << "Podaj login: ";
-        cin >> login;
+        login = MetodyPomocnicze::wczytajLinie();
         uzytkownik.ustawLogin(login);
     } while (czyIstniejeLogin(uzytkownik.pobierzLogin()) == true);
 
     string haslo;
     cout << "Podaj haslo: ";
-    cin >> haslo;
+    haslo = MetodyPomocnicze::wczytajLinie();
     uzytkownik.ustawHaslo(haslo);
 
     return uzytkownik;
@@ -67,19 +67,14 @@ void UzytkownikMenedzer::wypiszWszystkichUzytkownikow()
     }
 }
 
-void UzytkownikMenedzer::wczytajUzytkownikowZpliku()
-{
-    uzytkownicy = plikZUzutkownikami.wczytajUzytkownikowZpliku();
-}
-
-int UzytkownikMenedzer::logowanieUzytkownika(vector<Uzytkownik> &uzytkownicy)
+void UzytkownikMenedzer::logowanieUzytkownika()
 {
     Uzytkownik uzytkownik;
     string login = "", haslo = "";
 
     cout << endl
          << "Podaj login: ";
-    cin >> login;
+    login = MetodyPomocnicze::wczytajLinie();
 
     vector<Uzytkownik>::iterator itr = uzytkownicy.begin();
     while (itr != uzytkownicy.end())
@@ -89,7 +84,7 @@ int UzytkownikMenedzer::logowanieUzytkownika(vector<Uzytkownik> &uzytkownicy)
             for (int iloscProb = 3; iloscProb > 0; iloscProb--)
             {
                 cout << "Podaj haslo. Pozostalo prob: " << iloscProb << ": ";
-                cin >> haslo;
+                haslo = MetodyPomocnicze::wczytajLinie();
 
                 if (itr->pobierzHaslo() == haslo)
                 {
@@ -97,33 +92,39 @@ int UzytkownikMenedzer::logowanieUzytkownika(vector<Uzytkownik> &uzytkownicy)
                          << "Zalogowales sie." << endl
                          << endl;
                     system("pause");
-                    return itr->pobierzId();
+                    idZalogowanegoUzytkownika = itr->pobierzId();
+                    return;
                 }
             }
             cout << "Wprowadzono 3 razy bledne haslo." << endl;
             system("pause");
-            return 0;
+            return;
         }
         itr++;
     }
     cout << "Nie ma uzytkownika z takim loginem" << endl
          << endl;
     system("pause");
-    return 0;
 }
 
-int UzytkownikMenedzer::wylogowanieUzytkownika()
+void UzytkownikMenedzer::wylogowanieUzytkownika()
 {
-    adresaci.clear();
     idZalogowanegoUzytkownika = 0;
-    return idZalogowanegoUzytkownika;
+}
+
+bool UzytkownikMenedzer::czyUzytkownikJestZalogowany()
+{
+    if (idZalogowanegoUzytkownika > 0)
+        return true;
+    else
+        return false;
 }
 
 void UzytkownikMenedzer::zmianaHasla()
 {
     string noweHaslo = "";
     cout << "Podaj nowe haslo: ";
-    cin >> noweHaslo;
+    noweHaslo = MetodyPomocnicze::wczytajLinie();
 
     for (vector<Uzytkownik>::iterator itr = uzytkownicy.begin(); itr != uzytkownicy.end(); itr++)
     {
@@ -138,42 +139,7 @@ void UzytkownikMenedzer::zmianaHasla()
     plikZUzutkownikami.zapiszWszystkichUzytkownikowDoPliku(uzytkownicy);
 }
 
-int UzytkownikMenedzer::ustawIdZalogowanegoUzytkownika()
+int UzytkownikMenedzer::pobierzIdZalogowanegoUzytkownika()
 {
-    idZalogowanegoUzytkownika = logowanieUzytkownika(uzytkownicy);
     return idZalogowanegoUzytkownika;
-}
-
-int UzytkownikMenedzer::pobierzIdOstatniegoAdresata()
-{
-    int idOstatniegoAdresata;
-    if (!adresaci.empty())
-    {
-        idOstatniegoAdresata = ksiazkaAdresowaMenedzer.dodajAdresata(adresaci, idZalogowanegoUzytkownika, pobierzIdOstatniegoAdresataZPliku());
-    }
-    else
-    {
-        idOstatniegoAdresata = ksiazkaAdresowaMenedzer.dodajAdresata(adresaci, idZalogowanegoUzytkownika, 0);
-    }
-    return idOstatniegoAdresata;
-}
-
-int UzytkownikMenedzer::pobierzIdOstatniegoAdresataZPliku()
-{
-    int idOstatniegoAdresata;
-    if (adresaci.empty())
-    {
-        idOstatniegoAdresata = ksiazkaAdresowaMenedzer.wczytajAdresatowZPliku(adresaci, idZalogowanegoUzytkownika);
-    }
-    else
-    {
-        idOstatniegoAdresata = ksiazkaAdresowaMenedzer.pobierzIdOstatniegoAdresata();
-    }
-
-    return idOstatniegoAdresata;
-}
-
-void UzytkownikMenedzer::wypiszWszystkichAdresatow()
-{
-    ksiazkaAdresowaMenedzer.wyswietlWszystkichAdresatow(adresaci);
 }

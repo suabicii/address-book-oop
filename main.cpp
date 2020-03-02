@@ -6,14 +6,13 @@ using namespace std;
 
 int main()
 {
-    KsiazkaAdresowa ksiazkaAdresowa("Uzytkownicy.txt");
+    KsiazkaAdresowa ksiazkaAdresowa("Uzytkownicy.txt", "Adresaci.txt");
     char wybor;
-    int idZalogowanegoUzytkownika = 0;
-    int idOstatniegoAdresata = 0;
+    bool czyUzytkownikJestZalogowany = false;
 
     while (1)
     {
-        if (idZalogowanegoUzytkownika == 0)
+        if (!czyUzytkownikJestZalogowany)
         {
             system("cls");
             cout << "    >>> MENU  GLOWNE <<<" << endl;
@@ -31,8 +30,8 @@ int main()
                 ksiazkaAdresowa.rejestracjaUzytkownika();
                 break;
             case '2':
-                idZalogowanegoUzytkownika = ksiazkaAdresowa.logowanieUzytkownika();
-                idOstatniegoAdresata = ksiazkaAdresowa.wczytajAdresatowZPliku();
+                ksiazkaAdresowa.logowanieUzytkownika();
+                czyUzytkownikJestZalogowany = true;
                 break;
             case '3':
                 exit(0);
@@ -60,7 +59,7 @@ int main()
             switch (wybor)
             {
             case '1':
-                idOstatniegoAdresata = ksiazkaAdresowa.dodajAdresata();
+                ksiazkaAdresowa.dodajAdresata();
                 break;
             case '2':
                 ksiazkaAdresowa.wypiszWszystkichAdresatow();
@@ -69,7 +68,8 @@ int main()
                 ksiazkaAdresowa.zmienHaslo();
                 break;
             case '4':
-                idZalogowanegoUzytkownika = ksiazkaAdresowa.wylogowanieUzytkownika();
+                ksiazkaAdresowa.wylogowanieUzytkownika();
+                czyUzytkownikJestZalogowany = false;
                 break;
             default:
                 cout << "Nie ma takiej opcji w menu!" << endl;
