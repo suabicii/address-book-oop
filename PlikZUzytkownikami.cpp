@@ -59,9 +59,7 @@ void PlikZUzytkownikami::zapiszWszystkichUzytkownikowDoPliku(vector<Uzytkownik> 
 
 bool PlikZUzytkownikami::czyPlikJestPusty()
 {
-    fstream plikTekstowy;
-    plikTekstowy.seekg(0, ios::end);
-    if (plikTekstowy.tellg() == 0)
+    if (ifstream(NAZWA_PLIKU_Z_UZYTKOWNIKAMI, ios::ate).tellg())
         return false;
     else
         return true;

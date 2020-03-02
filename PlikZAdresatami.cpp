@@ -28,9 +28,7 @@ bool PlikZAdresatami::dopiszAdresataDoPliku(Adresat adresat)
 
 bool PlikZAdresatami::czyPlikJestPusty()
 {
-    fstream plikTekstowy;
-    plikTekstowy.seekg(0, ios::end);
-    if (plikTekstowy.tellg() == 0)
+    if (ifstream(NAZWA_PLIKU_Z_ADRESATAMI, ios::ate).tellg())
         return false;
     else
         return true;

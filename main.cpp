@@ -11,6 +11,7 @@ int main()
     int idZalogowanegoUzytkownika = 0;
     int idOstatniegoAdresata = 0;
 
+    ksiazkaAdresowa.rejestracjaUzytkownika();
     ksiazkaAdresowa.logowanieUzytkownika();
     ksiazkaAdresowa.dodajAdresata();
     ksiazkaAdresowa.wypiszWszystkichAdresatow();
