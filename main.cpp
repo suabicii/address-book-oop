@@ -13,6 +13,7 @@ int main()
 
     ksiazkaAdresowa.logowanieUzytkownika();
     ksiazkaAdresowa.dodajAdresata();
+    ksiazkaAdresowa.wypiszWszystkichAdresatow();
 
     /* while (1)
     {

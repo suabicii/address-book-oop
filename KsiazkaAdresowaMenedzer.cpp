@@ -10,24 +10,24 @@ void KsiazkaAdresowaMenedzer::dodajAdresata()
     // zapisz wprowadzanie danych do odzielnej funkcji
     // if (plikZAdresatami.dopiszAdresataDoPliku(adresat))
     cout << "Podaj imie: ";
-    cin >> imie;
+    imie = MetodyPomocnicze::wczytajLinie();
     adresat.ustawImie(imie);
 
     cout << "Podaj nazwisko: ";
-    cin >> nazwisko;
+    nazwisko = MetodyPomocnicze::wczytajLinie();
     adresat.ustawNazwisko(nazwisko);
 
     cout << "Podaj numer telefonu: ";
-    cin >> nrTel;
+    nrTel = MetodyPomocnicze::wczytajLinie();
     adresat.ustawNrTel(nrTel);
 
     cout << "Podaj email: ";
-    cin >> email;
+    email = MetodyPomocnicze::wczytajLinie();
     adresat.ustawEmail(email);
 
     cout << "Podaj adres: ";
     cin.sync();
-    getline(cin, adres);
+    adres = MetodyPomocnicze::wczytajLinie();
     adresat.ustawAdres(adres);
 
     plikZAdresatami.dopiszAdresataDoPliku(adresat);
