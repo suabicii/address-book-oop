@@ -3,12 +3,33 @@
 void KsiazkaAdresowaMenedzer::dodajAdresata()
 {
     Adresat adresat;
+
+    cout << " >>> DODAWANIE NOWEGO ADRESATA <<<" << endl
+         << endl;
+    adresat = podajDaneNowegoAdresata();
+
+    adresaci.push_back(adresat);
+
+    if (plikZAdresatami.dopiszAdresataDoPliku(adresat))
+    {
+        cout << "Adresat zostal dodany" << endl;
+        Sleep(1500);
+    }
+    else
+    {
+        cout << "Blad. Nie udalo sie dodac nowego adresata do pliku" << endl;
+        Sleep(1500);
+    }
+}
+
+Adresat KsiazkaAdresowaMenedzer::podajDaneNowegoAdresata()
+{
     string imie, nazwisko, nrTel, email, adres;
+    Adresat adresat;
 
     adresat.ustawId(plikZAdresatami.pobierzIdOstatniegoAdresata() + 1);
     adresat.ustawIdUzytkownika(ID_ZALOGOWANEGO_UZYTKOWNIKA);
-    // zapisz wprowadzanie danych do odzielnej funkcji
-    // if (plikZAdresatami.dopiszAdresataDoPliku(adresat))
+
     cout << "Podaj imie: ";
     imie = MetodyPomocnicze::wczytajLinie();
     adresat.ustawImie(imie);
@@ -30,11 +51,7 @@ void KsiazkaAdresowaMenedzer::dodajAdresata()
     adres = MetodyPomocnicze::wczytajLinie();
     adresat.ustawAdres(adres);
 
-    plikZAdresatami.dopiszAdresataDoPliku(adresat);
-    adresaci.push_back(adresat);
-
-    cout << "Adresat zostal dodany" << endl;
-    Sleep(1500);
+    return adresat;
 }
 
 int KsiazkaAdresowaMenedzer::pobierzIdOstatniegoAdresata()
