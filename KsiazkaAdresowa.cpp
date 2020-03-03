@@ -48,3 +48,8 @@ void KsiazkaAdresowa::wypiszWszystkichAdresatow()
 {
     ksiazkaAdresowaMenedzer->wyswietlWszystkichAdresatow();
 }
+
+void KsiazkaAdresowa::edytujAdresata()
+{
+    ksiazkaAdresowaMenedzer->edytujAdresata();
+}

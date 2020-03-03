@@ -30,4 +30,5 @@ public:
     void zmienHaslo();
     void dodajAdresata();
     void wypiszWszystkichAdresatow();
+    void edytujAdresata();
 };

@@ -31,6 +31,7 @@ public:
     bool dopiszAdresataDoPliku(Adresat adresat);
     vector<Adresat> wczytajAdresatowZpliku(int idZalogowanegoUzytkownika);
     int pobierzIdOstatniegoAdresata();
+    void zaktualizujPlik(Adresat adresat);
 };
 
 #endif

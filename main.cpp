@@ -49,9 +49,10 @@ int main()
             cout << "---------------------------" << endl;
             cout << "1. Dodaj adresata" << endl;
             cout << "2. Wyswietl adresatow" << endl;
+            cout << "3. Edytuj adresata" << endl;
             cout << "---------------------------" << endl;
-            cout << "3. Zmien haslo" << endl;
-            cout << "4. Wyloguj sie" << endl;
+            cout << "4. Zmien haslo" << endl;
+            cout << "5. Wyloguj sie" << endl;
             cout << "---------------------------" << endl;
             cout << "Twoj wybor: ";
             cin >> wybor;
@@ -65,9 +66,12 @@ int main()
                 ksiazkaAdresowa.wypiszWszystkichAdresatow();
                 break;
             case '3':
-                ksiazkaAdresowa.zmienHaslo();
+                ksiazkaAdresowa.edytujAdresata();
                 break;
             case '4':
+                ksiazkaAdresowa.zmienHaslo();
+                break;
+            case '5':
                 ksiazkaAdresowa.wylogowanieUzytkownika();
                 czyUzytkownikJestZalogowany = false;
                 break;

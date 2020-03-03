@@ -147,3 +147,41 @@ int PlikZAdresatami::pobierzIdAdresataZDanychOddzielonychPionowymiKreskami(strin
     int idAdresata = atoi(idAdresataZPliku.c_str());
     return idAdresata;
 }
+
+void PlikZAdresatami::zaktualizujPlik(Adresat adresat)
+{
+    fstream odczytywanyPlikTekstowy, tymczasowyPlikTekstowy;
+    string linia, idUzytkownikaZPliku;
+    string nazwaPlikuTymczasowego = NAZWA_PLIKU_Z_ADRESATAMI + "_tymczasowo";
+
+    odczytywanyPlikTekstowy.open(NAZWA_PLIKU_Z_ADRESATAMI, ios::in);
+    tymczasowyPlikTekstowy.open(nazwaPlikuTymczasowego, ios::out | ios::app);
+
+    if (odczytywanyPlikTekstowy.good())
+    {
+        while (!odczytywanyPlikTekstowy.eof())
+        {
+            getline(odczytywanyPlikTekstowy, linia);
+            idUzytkownikaZPliku = linia[0];
+            if (MetodyPomocnicze::konwersjaIntNaString(adresat.pobierzId()) == idUzytkownikaZPliku)
+            {
+                tymczasowyPlikTekstowy << adresat.pobierzId() << "|";
+                tymczasowyPlikTekstowy << adresat.pobierzIdUzytkownika() << "|";
+                tymczasowyPlikTekstowy << adresat.pobierzImie() << "|";
+                tymczasowyPlikTekstowy << adresat.pobierzNazwisko() << "|";
+                tymczasowyPlikTekstowy << adresat.pobierzNrTel() << "|";
+                tymczasowyPlikTekstowy << adresat.pobierzEmail() << "|";
+                tymczasowyPlikTekstowy << adresat.pobierzAdres() << "|" << endl;
+            }
+            else
+            {
+                tymczasowyPlikTekstowy << linia << endl;
+            }
+        }
+    }
+    odczytywanyPlikTekstowy.close();
+    tymczasowyPlikTekstowy.close();
+
+    remove(NAZWA_PLIKU_Z_ADRESATAMI.c_str());
+    rename(nazwaPlikuTymczasowego.c_str(), NAZWA_PLIKU_Z_ADRESATAMI.c_str());
+}

@@ -3,6 +3,8 @@
 
 #include <iostream>
 #include <sstream>
+#include <string>
+#include <algorithm>
 
 using namespace std;
 
@@ -14,6 +16,7 @@ public:
     static char wczytajZnak();
     static int wczytajLiczbeCalkowita();
     static string wczytajLinie();
+    static string zamienPierwszaLitereNaDuzaAPozostaleNaMale(string tekst);
 };
 
 #endif
