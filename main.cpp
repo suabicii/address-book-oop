@@ -9,7 +9,7 @@ int main()
     KsiazkaAdresowa ksiazkaAdresowa("Uzytkownicy.txt", "Adresaci.txt");
     char wybor;
     bool czyUzytkownikJestZalogowany = false;
-
+    // taktyczny komentarz
     while (1)
     {
         if (!czyUzytkownikJestZalogowany)
