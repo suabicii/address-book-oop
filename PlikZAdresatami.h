@@ -31,7 +31,7 @@ public:
     bool dopiszAdresataDoPliku(string liniaZDanymiAdresata, string nazwaPliku);
     vector<Adresat> wczytajAdresatowZpliku(int idZalogowanegoUzytkownika);
     int pobierzIdOstatniegoAdresata();
-    void zaktualizujPlik(Adresat adresat, string tryb);
+    void zaktualizujPlik(Adresat adresat, int idAdresata, string tryb);
     string zamienDaneAdresataNaLinieZDanymiOddzielonymiPionowymiKreskami(Adresat adresat);
     string pobierzNazwePlikuZAdresatami();
 };

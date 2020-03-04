@@ -155,7 +155,7 @@ void KsiazkaAdresowaMenedzer::edytujAdresata()
                      << endl;
                 break;
             }
-            plikZAdresatami.zaktualizujPlik(adresaci[i], "edycja");
+            plikZAdresatami.zaktualizujPlik(adresaci[i], adresaci[i].pobierzId(), "edycja");
             if (wybor >= '1' && wybor <= '5')
             {
                 cout << "Dane adresata zostaly zaktualizowane" << endl;
@@ -227,7 +227,7 @@ void KsiazkaAdresowaMenedzer::usunAdresata()
             if (znak == 't')
             {
                 adresaci.erase(itr);
-                plikZAdresatami.zaktualizujPlik(*itr, "usuwanie");
+                plikZAdresatami.zaktualizujPlik(*itr, idUsuwanegoAdresata, "usuwanie");
                 cout << endl
                      << endl
                      << "Szukany adresat zostal USUNIETY" << endl
