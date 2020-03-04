@@ -28,10 +28,11 @@ public:
     {
         idOstatniegoAdresata = 0;
     }
-    bool dopiszAdresataDoPliku(Adresat adresat);
+    bool dopiszAdresataDoPliku(Adresat adresat, string nazwaPliku);
     vector<Adresat> wczytajAdresatowZpliku(int idZalogowanegoUzytkownika);
     int pobierzIdOstatniegoAdresata();
     void zaktualizujPlik(Adresat adresat);
+    string pobierzNazwePlikuZAdresatami();
 };
 
 #endif

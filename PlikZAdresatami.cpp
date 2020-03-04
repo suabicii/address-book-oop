@@ -1,10 +1,10 @@
 #include "PlikZAdresatami.h"
 
-bool PlikZAdresatami::dopiszAdresataDoPliku(Adresat adresat)
+bool PlikZAdresatami::dopiszAdresataDoPliku(Adresat adresat, string nazwaPliku)
 {
     string liniaZDanymiAdresata = "";
     fstream plikTekstowy;
-    plikTekstowy.open(NAZWA_PLIKU_Z_ADRESATAMI.c_str(), ios::out | ios::app);
+    plikTekstowy.open(nazwaPliku.c_str(), ios::out | ios::app);
 
     if (plikTekstowy.good() == true)
     {
@@ -89,8 +89,8 @@ int PlikZAdresatami::pobierzIdOstatniegoAdresata()
 int PlikZAdresatami::pobierzIdUzytkownikaZDanychOddzielonychPionowymiKreskami(string daneJednegoAdresataOddzielonePionowymiKreskami)
 {
     int pozycjaRozpoczeciaIdUzytkownika = daneJednegoAdresataOddzielonePionowymiKreskami.find_first_of('|') + 1;
-    string idUzytkownikaZPliku = MetodyPomocnicze::pobierzLiczbe(daneJednegoAdresataOddzielonePionowymiKreskami, pozycjaRozpoczeciaIdUzytkownika);
-    int idUzytkownika = atoi(idUzytkownikaZPliku.c_str());
+    string idAdresataZPliku = MetodyPomocnicze::pobierzLiczbe(daneJednegoAdresataOddzielonePionowymiKreskami, pozycjaRozpoczeciaIdUzytkownika);
+    int idUzytkownika = atoi(idAdresataZPliku.c_str());
 
     return idUzytkownika;
 }
@@ -151,7 +151,7 @@ int PlikZAdresatami::pobierzIdAdresataZDanychOddzielonychPionowymiKreskami(strin
 void PlikZAdresatami::zaktualizujPlik(Adresat adresat)
 {
     fstream odczytywanyPlikTekstowy, tymczasowyPlikTekstowy;
-    string linia, idUzytkownikaZPliku;
+    string linia, idAdresataZPliku;
     string nazwaPlikuTymczasowego = NAZWA_PLIKU_Z_ADRESATAMI + "_tymczasowo";
 
     odczytywanyPlikTekstowy.open(NAZWA_PLIKU_Z_ADRESATAMI, ios::in);
@@ -162,21 +162,11 @@ void PlikZAdresatami::zaktualizujPlik(Adresat adresat)
         while (!odczytywanyPlikTekstowy.eof())
         {
             getline(odczytywanyPlikTekstowy, linia);
-            idUzytkownikaZPliku = linia[0];
-            if (MetodyPomocnicze::konwersjaIntNaString(adresat.pobierzId()) == idUzytkownikaZPliku)
-            {
-                tymczasowyPlikTekstowy << adresat.pobierzId() << "|";
-                tymczasowyPlikTekstowy << adresat.pobierzIdUzytkownika() << "|";
-                tymczasowyPlikTekstowy << adresat.pobierzImie() << "|";
-                tymczasowyPlikTekstowy << adresat.pobierzNazwisko() << "|";
-                tymczasowyPlikTekstowy << adresat.pobierzNrTel() << "|";
-                tymczasowyPlikTekstowy << adresat.pobierzEmail() << "|";
-                tymczasowyPlikTekstowy << adresat.pobierzAdres() << "|" << endl;
-            }
+            idAdresataZPliku = linia[0];
+            if (MetodyPomocnicze::konwersjaIntNaString(adresat.pobierzId()) == idAdresataZPliku)
+                dopiszAdresataDoPliku(adresat, nazwaPlikuTymczasowego);
             else
-            {
                 tymczasowyPlikTekstowy << linia << endl;
-            }
         }
     }
     odczytywanyPlikTekstowy.close();
@@ -184,4 +174,9 @@ void PlikZAdresatami::zaktualizujPlik(Adresat adresat)
 
     remove(NAZWA_PLIKU_Z_ADRESATAMI.c_str());
     rename(nazwaPlikuTymczasowego.c_str(), NAZWA_PLIKU_Z_ADRESATAMI.c_str());
+}
+
+string PlikZAdresatami::pobierzNazwePlikuZAdresatami()
+{
+    return NAZWA_PLIKU_Z_ADRESATAMI;
 }

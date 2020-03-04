@@ -10,7 +10,7 @@ void KsiazkaAdresowaMenedzer::dodajAdresata()
 
     adresaci.push_back(adresat);
 
-    if (plikZAdresatami.dopiszAdresataDoPliku(adresat))
+    if (plikZAdresatami.dopiszAdresataDoPliku(adresat, plikZAdresatami.pobierzNazwePlikuZAdresatami()))
     {
         cout << "Adresat zostal dodany" << endl;
         Sleep(1500);
