@@ -149,7 +149,7 @@ int PlikZAdresatami::pobierzIdAdresataZDanychOddzielonychPionowymiKreskami(strin
     return idAdresata;
 }
 
-void PlikZAdresatami::zaktualizujPlik(Adresat adresat)
+void PlikZAdresatami::zaktualizujPlik(Adresat adresat, string tryb)
 {
     fstream odczytywanyPlikTekstowy;
     string liniaWOdczytywanymPliku, liniaZDanymiAdresata;
@@ -164,8 +164,10 @@ void PlikZAdresatami::zaktualizujPlik(Adresat adresat)
         while (!odczytywanyPlikTekstowy.eof())
         {
             getline(odczytywanyPlikTekstowy, liniaWOdczytywanymPliku);
-            if (liniaZDanymiAdresata[0] == liniaWOdczytywanymPliku[0])
+            if (liniaZDanymiAdresata[0] == liniaWOdczytywanymPliku[0] && tryb == "edycja")
+            {
                 dopiszAdresataDoPliku(liniaZDanymiAdresata, nazwaPlikuTymczasowego);
+            }
             else
                 dopiszAdresataDoPliku(liniaWOdczytywanymPliku, nazwaPlikuTymczasowego);
         }

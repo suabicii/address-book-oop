@@ -4,6 +4,7 @@
 #include <iostream>
 #include <vector>
 #include <fstream>
+#include <Windows.h>
 
 #include "Adresat.h"
 #include "MetodyPomocnicze.h"
@@ -30,7 +31,7 @@ public:
     bool dopiszAdresataDoPliku(string liniaZDanymiAdresata, string nazwaPliku);
     vector<Adresat> wczytajAdresatowZpliku(int idZalogowanegoUzytkownika);
     int pobierzIdOstatniegoAdresata();
-    void zaktualizujPlik(Adresat adresat);
+    void zaktualizujPlik(Adresat adresat, string tryb);
     string zamienDaneAdresataNaLinieZDanymiOddzielonymiPionowymiKreskami(Adresat adresat);
     string pobierzNazwePlikuZAdresatami();
 };

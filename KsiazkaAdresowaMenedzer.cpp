@@ -92,7 +92,6 @@ void KsiazkaAdresowaMenedzer::wyswietlDaneAdresata(Adresat adresat)
 
 void KsiazkaAdresowaMenedzer::edytujAdresata()
 {
-    system("cls");
     Adresat adresat;
     int idEdytowanegoAdresata = 0;
 
@@ -103,6 +102,7 @@ void KsiazkaAdresowaMenedzer::edytujAdresata()
         return;
     }
 
+    system("cls");
     cout << ">>> EDYCJA WYBRANEGO ADRESATA <<<" << endl
          << endl;
     cout << "Podaj ID wybranego adresata: ";
@@ -155,7 +155,7 @@ void KsiazkaAdresowaMenedzer::edytujAdresata()
                      << endl;
                 break;
             }
-            plikZAdresatami.zaktualizujPlik(adresaci[i]);
+            plikZAdresatami.zaktualizujPlik(adresaci[i], "edycja");
             if (wybor >= '1' && wybor <= '5')
             {
                 cout << "Dane adresata zostaly zaktualizowane" << endl;
@@ -191,4 +191,66 @@ char KsiazkaAdresowaMenedzer::wybierzOpcjeZMenuEdycja()
     wybor = MetodyPomocnicze::wczytajZnak();
 
     return wybor;
+}
+
+void KsiazkaAdresowaMenedzer::usunAdresata()
+{
+    int idUsuwanegoAdresata;
+
+    if (adresaci.empty())
+    {
+        cout << "Ksiazka adresowa jest pusta" << endl;
+        Sleep(1500);
+        return;
+    }
+
+    system("cls");
+    cout << ">>> USUWANIE WYBRANEGO ADRESATA <<<" << endl
+         << endl;
+
+    cout << "Podaj ID adresata, ktorego chcesz usunac: ";
+    idUsuwanegoAdresata = MetodyPomocnicze::wczytajLiczbeCalkowita();
+
+    char znak;
+    bool czyIstniejeAdresat = false;
+
+    for (vector<Adresat>::iterator itr = adresaci.begin(); itr != adresaci.end(); itr++)
+    {
+        if (itr->pobierzId() == idUsuwanegoAdresata)
+        {
+            cout << "Oto dane adresata: " << endl;
+            wyswietlDaneAdresata(*itr);
+            czyIstniejeAdresat = true;
+            cout << endl
+                 << "Potwierdz naciskajac klawisz 't': ";
+            znak = MetodyPomocnicze::wczytajZnak();
+            if (znak == 't')
+            {
+                adresaci.erase(itr);
+                plikZAdresatami.zaktualizujPlik(*itr, "usuwanie");
+                cout << endl
+                     << endl
+                     << "Szukany adresat zostal USUNIETY" << endl
+                     << endl;
+                Sleep(1500);
+                return;
+            }
+            else
+            {
+                cout << endl
+                     << endl
+                     << "Wybrany adresat NIE zostal usuniety" << endl
+                     << endl;
+                Sleep(1500);
+                return;
+            }
+        }
+    }
+    if (czyIstniejeAdresat == false)
+    {
+        cout << endl
+             << "Nie ma takiego adresata w ksiazce adresowej" << endl
+             << endl;
+        system("pause");
+    }
 }

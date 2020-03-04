@@ -33,6 +33,7 @@ public:
     void wyswietlWszystkichAdresatow();
     int pobierzIdOstatniegoAdresata();
     void edytujAdresata();
+    void usunAdresata();
 };
 
 #endif
