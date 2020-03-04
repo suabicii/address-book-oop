@@ -108,6 +108,8 @@ void KsiazkaAdresowaMenedzer::edytujAdresata()
     {
         if (adresaci[i].pobierzId() == idEdytowanegoAdresata)
         {
+            cout << "Oto dane adresata: " << endl;
+            wyswietlDaneAdresata(adresaci[i]);
             czyIstniejeAdresat = true;
             wybor = wybierzOpcjeZMenuEdycja();
 
