@@ -149,8 +149,11 @@ void KsiazkaAdresowaMenedzer::edytujAdresata()
                 break;
             }
             plikZAdresatami.zaktualizujPlik(adresaci[i]);
-            cout << "Dane adresata zostaly zaktualizowane" << endl;
-            Sleep(1500);
+            if (wybor >= '1' && wybor <= '5')
+            {
+                cout << "Dane adresata zostaly zaktualizowane" << endl;
+                Sleep(1500);
+            }
         }
     }
     if (czyIstniejeAdresat == false)
