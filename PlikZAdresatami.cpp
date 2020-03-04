@@ -1,15 +1,12 @@
 #include "PlikZAdresatami.h"
 
-bool PlikZAdresatami::dopiszAdresataDoPliku(Adresat adresat, string nazwaPliku)
+bool PlikZAdresatami::dopiszAdresataDoPliku(string liniaZDanymiAdresata, string nazwaPliku)
 {
-    string liniaZDanymiAdresata = "";
     fstream plikTekstowy;
     plikTekstowy.open(nazwaPliku.c_str(), ios::out | ios::app);
 
     if (plikTekstowy.good() == true)
     {
-        liniaZDanymiAdresata = zamienDaneAdresataNaLinieZDanymiOddzielonymiPionowymiKreskami(adresat);
-
         if (czyPlikJestPusty(nazwaPliku) == true)
         {
             plikTekstowy << liniaZDanymiAdresata;
@@ -19,7 +16,11 @@ bool PlikZAdresatami::dopiszAdresataDoPliku(Adresat adresat, string nazwaPliku)
             plikTekstowy << endl
                          << liniaZDanymiAdresata;
         }
-        idOstatniegoAdresata++;
+
+        if (nazwaPliku == NAZWA_PLIKU_Z_ADRESATAMI)
+        {
+            idOstatniegoAdresata++;
+        }
         plikTekstowy.close();
         return true;
     }
@@ -150,37 +151,26 @@ int PlikZAdresatami::pobierzIdAdresataZDanychOddzielonychPionowymiKreskami(strin
 
 void PlikZAdresatami::zaktualizujPlik(Adresat adresat)
 {
-    fstream odczytywanyPlikTekstowy, tymczasowyPlikTekstowy;
-    string linia, idAdresataZPliku;
-    string nazwaPlikuTymczasowego = NAZWA_PLIKU_Z_ADRESATAMI + "_tymczasowo";
+    fstream odczytywanyPlikTekstowy;
+    string liniaWOdczytywanymPliku, liniaZDanymiAdresata;
+    string nazwaPlikuTymczasowego = NAZWA_PLIKU_Z_ADRESATAMI.substr(0, NAZWA_PLIKU_Z_ADRESATAMI.length() - 4) + "_tymczasowo.txt";
 
-    odczytywanyPlikTekstowy.open(NAZWA_PLIKU_Z_ADRESATAMI, ios::in);
-    tymczasowyPlikTekstowy.open(nazwaPlikuTymczasowego, ios::out | ios::app);
+    odczytywanyPlikTekstowy.open(NAZWA_PLIKU_Z_ADRESATAMI.c_str(), ios::in);
+
+    liniaZDanymiAdresata = zamienDaneAdresataNaLinieZDanymiOddzielonymiPionowymiKreskami(adresat);
 
     if (odczytywanyPlikTekstowy.good())
     {
         while (!odczytywanyPlikTekstowy.eof())
         {
-            getline(odczytywanyPlikTekstowy, linia);
-            idAdresataZPliku = linia[0];
-            if (MetodyPomocnicze::konwersjaIntNaString(adresat.pobierzId()) == idAdresataZPliku)
-                dopiszAdresataDoPliku(adresat, nazwaPlikuTymczasowego);
+            getline(odczytywanyPlikTekstowy, liniaWOdczytywanymPliku);
+            if (liniaZDanymiAdresata[0] == liniaWOdczytywanymPliku[0])
+                dopiszAdresataDoPliku(liniaZDanymiAdresata, nazwaPlikuTymczasowego);
             else
-            {
-                if (czyPlikJestPusty(nazwaPlikuTymczasowego))
-                {
-                    tymczasowyPlikTekstowy << linia;
-                }
-                else
-                {
-                    tymczasowyPlikTekstowy << endl
-                                           << linia;
-                }
-            }
+                dopiszAdresataDoPliku(liniaWOdczytywanymPliku, nazwaPlikuTymczasowego);
         }
     }
     odczytywanyPlikTekstowy.close();
-    tymczasowyPlikTekstowy.close();
 
     remove(NAZWA_PLIKU_Z_ADRESATAMI.c_str());
     rename(nazwaPlikuTymczasowego.c_str(), NAZWA_PLIKU_Z_ADRESATAMI.c_str());
