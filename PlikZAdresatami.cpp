@@ -10,7 +10,7 @@ bool PlikZAdresatami::dopiszAdresataDoPliku(Adresat adresat, string nazwaPliku)
     {
         liniaZDanymiAdresata = zamienDaneAdresataNaLinieZDanymiOddzielonymiPionowymiKreskami(adresat);
 
-        if (czyPlikJestPusty() == true)
+        if (czyPlikJestPusty(nazwaPliku) == true)
         {
             plikTekstowy << liniaZDanymiAdresata;
         }
@@ -26,9 +26,9 @@ bool PlikZAdresatami::dopiszAdresataDoPliku(Adresat adresat, string nazwaPliku)
     return false;
 }
 
-bool PlikZAdresatami::czyPlikJestPusty()
+bool PlikZAdresatami::czyPlikJestPusty(string nazwaPliku)
 {
-    if (ifstream(NAZWA_PLIKU_Z_ADRESATAMI, ios::ate).tellg())
+    if (ifstream(nazwaPliku, ios::ate).tellg())
         return false;
     else
         return true;
@@ -166,7 +166,17 @@ void PlikZAdresatami::zaktualizujPlik(Adresat adresat)
             if (MetodyPomocnicze::konwersjaIntNaString(adresat.pobierzId()) == idAdresataZPliku)
                 dopiszAdresataDoPliku(adresat, nazwaPlikuTymczasowego);
             else
-                tymczasowyPlikTekstowy << linia << endl;
+            {
+                if (czyPlikJestPusty(nazwaPlikuTymczasowego))
+                {
+                    tymczasowyPlikTekstowy << linia;
+                }
+                else
+                {
+                    tymczasowyPlikTekstowy << endl
+                                           << linia;
+                }
+            }
         }
     }
     odczytywanyPlikTekstowy.close();

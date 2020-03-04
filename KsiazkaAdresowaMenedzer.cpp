@@ -93,8 +93,13 @@ void KsiazkaAdresowaMenedzer::edytujAdresata()
     system("cls");
     Adresat adresat;
     int idEdytowanegoAdresata = 0;
-    int numerLiniiEdytowanegoAdresata = 0;
-    string liniaZDanymiAdresata = "";
+
+    if (adresaci.empty())
+    {
+        cout << "Ksiazka adresowa jest pusta" << endl;
+        Sleep(1500);
+        return;
+    }
 
     cout << ">>> EDYCJA WYBRANEGO ADRESATA <<<" << endl
          << endl;
