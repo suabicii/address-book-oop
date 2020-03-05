@@ -9,7 +9,7 @@ int main()
     KsiazkaAdresowa ksiazkaAdresowa("Uzytkownicy.txt", "Adresaci.txt");
     char wybor;
     bool czyUzytkownikJestZalogowany = false;
-    // taktyczny komentarz
+
     while (1)
     {
         if (!czyUzytkownikJestZalogowany)
@@ -50,9 +50,10 @@ int main()
             cout << "1. Dodaj adresata" << endl;
             cout << "2. Wyswietl adresatow" << endl;
             cout << "3. Edytuj adresata" << endl;
+            cout << "4. Usun adresata" << endl;
             cout << "---------------------------" << endl;
-            cout << "4. Zmien haslo" << endl;
-            cout << "5. Wyloguj sie" << endl;
+            cout << "5. Zmien haslo" << endl;
+            cout << "6. Wyloguj sie" << endl;
             cout << "---------------------------" << endl;
             cout << "Twoj wybor: ";
             cin >> wybor;
@@ -69,9 +70,12 @@ int main()
                 ksiazkaAdresowa.edytujAdresata();
                 break;
             case '4':
-                ksiazkaAdresowa.zmienHaslo();
+                ksiazkaAdresowa.usunAdresata();
                 break;
             case '5':
+                ksiazkaAdresowa.zmienHaslo();
+                break;
+            case '6':
                 ksiazkaAdresowa.wylogowanieUzytkownika();
                 czyUzytkownikJestZalogowany = false;
                 break;

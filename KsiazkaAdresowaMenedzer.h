@@ -22,6 +22,7 @@ class KsiazkaAdresowaMenedzer
     Adresat podajDaneNowegoAdresata();
     void wyswietlDaneAdresata(Adresat adresat);
     char wybierzOpcjeZMenuEdycja();
+    bool czyKsiazkaAdresowaJestPusta();
 
 public:
     KsiazkaAdresowaMenedzer(string nazwaPlikuZAdresatami, int idZalogowanegoUzytkownika)
@@ -33,6 +34,7 @@ public:
     void wyswietlWszystkichAdresatow();
     int pobierzIdOstatniegoAdresata();
     void edytujAdresata();
+    void usunAdresata();
 };
 
 #endif

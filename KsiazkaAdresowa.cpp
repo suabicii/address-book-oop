@@ -53,3 +53,8 @@ void KsiazkaAdresowa::edytujAdresata()
 {
     ksiazkaAdresowaMenedzer->edytujAdresata();
 }
+
+void KsiazkaAdresowa::usunAdresata()
+{
+    ksiazkaAdresowaMenedzer->usunAdresata();
+}

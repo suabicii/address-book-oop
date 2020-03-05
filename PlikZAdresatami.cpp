@@ -149,10 +149,10 @@ int PlikZAdresatami::pobierzIdAdresataZDanychOddzielonychPionowymiKreskami(strin
     return idAdresata;
 }
 
-void PlikZAdresatami::zaktualizujPlik(Adresat adresat)
+void PlikZAdresatami::zaktualizujPlik(Adresat adresat, int idAdresata, string tryb)
 {
     fstream odczytywanyPlikTekstowy;
-    string liniaWOdczytywanymPliku, liniaZDanymiAdresata;
+    string liniaWOdczytywanymPliku, liniaZDanymiAdresata, idAdresataZPliku;
     string nazwaPlikuTymczasowego = NAZWA_PLIKU_Z_ADRESATAMI.substr(0, NAZWA_PLIKU_Z_ADRESATAMI.length() - 4) + "_tymczasowo.txt";
 
     odczytywanyPlikTekstowy.open(NAZWA_PLIKU_Z_ADRESATAMI.c_str(), ios::in);
@@ -164,8 +164,23 @@ void PlikZAdresatami::zaktualizujPlik(Adresat adresat)
         while (!odczytywanyPlikTekstowy.eof())
         {
             getline(odczytywanyPlikTekstowy, liniaWOdczytywanymPliku);
-            if (liniaZDanymiAdresata[0] == liniaWOdczytywanymPliku[0])
-                dopiszAdresataDoPliku(liniaZDanymiAdresata, nazwaPlikuTymczasowego);
+            idAdresataZPliku = liniaWOdczytywanymPliku[0];
+            if (idAdresata == atoi(idAdresataZPliku.c_str()))
+            {
+                if (tryb == "edycja")
+                {
+                    dopiszAdresataDoPliku(liniaZDanymiAdresata, nazwaPlikuTymczasowego);
+                }
+                else if (tryb == "usuwanie")
+                {
+                    // taktyczny komentarz
+                }
+                else
+                {
+                    cout << "Programista nie ustalil trybu, wiec nie wiem co robic. SMUTECZEG :(" << endl;
+                    Sleep(1500);
+                }
+            }
             else
                 dopiszAdresataDoPliku(liniaWOdczytywanymPliku, nazwaPlikuTymczasowego);
         }
