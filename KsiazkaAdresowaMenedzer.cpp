@@ -63,10 +63,9 @@ int KsiazkaAdresowaMenedzer::pobierzIdOstatniegoAdresata()
 
 void KsiazkaAdresowaMenedzer::wyswietlWszystkichAdresatow()
 {
-    if (adresaci.empty())
+    if (czyKsiazkaAdresowaJestPusta())
     {
-        cout << "Ksiazka adresowa jest pusta" << endl;
-        Sleep(1500);
+        return;
     }
     else
     {
@@ -95,10 +94,8 @@ void KsiazkaAdresowaMenedzer::edytujAdresata()
     Adresat adresat;
     int idEdytowanegoAdresata = 0;
 
-    if (adresaci.empty())
+    if (czyKsiazkaAdresowaJestPusta())
     {
-        cout << "Ksiazka adresowa jest pusta" << endl;
-        Sleep(1500);
         return;
     }
 
@@ -197,10 +194,8 @@ void KsiazkaAdresowaMenedzer::usunAdresata()
 {
     int idUsuwanegoAdresata;
 
-    if (adresaci.empty())
+    if (czyKsiazkaAdresowaJestPusta())
     {
-        cout << "Ksiazka adresowa jest pusta" << endl;
-        Sleep(1500);
         return;
     }
 
@@ -253,4 +248,15 @@ void KsiazkaAdresowaMenedzer::usunAdresata()
              << endl;
         system("pause");
     }
+}
+
+bool KsiazkaAdresowaMenedzer::czyKsiazkaAdresowaJestPusta()
+{
+    if (adresaci.empty())
+    {
+        cout << "Ksiazka adresowa jest pusta" << endl;
+        Sleep(1500);
+        return true;
+    }
+    return false;
 }
