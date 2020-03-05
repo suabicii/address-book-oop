@@ -145,7 +145,7 @@ void PlikZAdresatami::zaktualizujPlik(Adresat adresat, int idAdresata, string tr
 {
     fstream odczytywanyPlikTekstowy;
     string liniaWOdczytywanymPliku, liniaZDanymiAdresata, idAdresataZPliku;
-    string nazwaPlikuTymczasowego = pobierzNazwePliku().substr(0, pobierzNazwePliku().length() - 4) + "_tymczasowo.txt";
+    string nazwaPlikuTymczasowego = pobierzNazwePliku().substr(0, pobierzNazwePliku().length() - 5) + "_tymczasowo.txt";
 
     odczytywanyPlikTekstowy.open(pobierzNazwePliku().c_str(), ios::in);
 
