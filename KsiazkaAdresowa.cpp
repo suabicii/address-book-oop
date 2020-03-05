@@ -10,13 +10,15 @@ void KsiazkaAdresowa::wypiszWszystkichUzytkownikow()
     uzytkownikMenedzer.wypiszWszystkichUzytkownikow();
 }
 // dependency injection - wstrzykiwanie zaleznosci
-void KsiazkaAdresowa::logowanieUzytkownika()
+bool KsiazkaAdresowa::logowanieUzytkownika()
 {
     uzytkownikMenedzer.logowanieUzytkownika();
     if (uzytkownikMenedzer.czyUzytkownikJestZalogowany())
     {
         ksiazkaAdresowaMenedzer = new KsiazkaAdresowaMenedzer(NAZWA_PLIKU_Z_ADRESTATAMI, uzytkownikMenedzer.pobierzIdZalogowanegoUzytkownika());
+        return true;
     }
+    return false;
 }
 
 void KsiazkaAdresowa::zmienHaslo()

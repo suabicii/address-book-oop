@@ -24,7 +24,7 @@ public:
         ksiazkaAdresowaMenedzer = NULL;
     }
     void rejestracjaUzytkownika();
-    void logowanieUzytkownika();
+    bool logowanieUzytkownika();
     void wylogowanieUzytkownika();
     void wypiszWszystkichUzytkownikow();
     void zmienHaslo();
