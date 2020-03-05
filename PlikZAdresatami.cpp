@@ -7,7 +7,7 @@ bool PlikZAdresatami::dopiszAdresataDoPliku(string liniaZDanymiAdresata, string 
 
     if (plikTekstowy.good() == true)
     {
-        if (czyPlikJestPusty(nazwaPliku) == true)
+        if (czyPlikJestPusty() == true)
         {
             plikTekstowy << liniaZDanymiAdresata;
         }
@@ -17,7 +17,7 @@ bool PlikZAdresatami::dopiszAdresataDoPliku(string liniaZDanymiAdresata, string 
                          << liniaZDanymiAdresata;
         }
 
-        if (nazwaPliku == NAZWA_PLIKU_Z_ADRESATAMI)
+        if (nazwaPliku == pobierzNazwePliku())
         {
             idOstatniegoAdresata++;
         }
@@ -25,14 +25,6 @@ bool PlikZAdresatami::dopiszAdresataDoPliku(string liniaZDanymiAdresata, string 
         return true;
     }
     return false;
-}
-
-bool PlikZAdresatami::czyPlikJestPusty(string nazwaPliku)
-{
-    if (ifstream(nazwaPliku, ios::ate).tellg())
-        return false;
-    else
-        return true;
 }
 
 string PlikZAdresatami::zamienDaneAdresataNaLinieZDanymiOddzielonymiPionowymiKreskami(Adresat adresat)
@@ -56,7 +48,7 @@ vector<Adresat> PlikZAdresatami::wczytajAdresatowZpliku(int idZalogowanegoUzytko
     string daneJednegoAdresataOddzielonePionowymiKreskami = "";
     string daneOstaniegoAdresataWPliku = "";
     fstream plikTekstowy;
-    plikTekstowy.open(NAZWA_PLIKU_Z_ADRESATAMI.c_str(), ios::in);
+    plikTekstowy.open(pobierzNazwePliku().c_str(), ios::in);
 
     if (plikTekstowy.good() == true)
     {
@@ -153,9 +145,9 @@ void PlikZAdresatami::zaktualizujPlik(Adresat adresat, int idAdresata, string tr
 {
     fstream odczytywanyPlikTekstowy;
     string liniaWOdczytywanymPliku, liniaZDanymiAdresata, idAdresataZPliku;
-    string nazwaPlikuTymczasowego = NAZWA_PLIKU_Z_ADRESATAMI.substr(0, NAZWA_PLIKU_Z_ADRESATAMI.length() - 4) + "_tymczasowo.txt";
+    string nazwaPlikuTymczasowego = pobierzNazwePliku().substr(0, pobierzNazwePliku().length() - 5) + "_tymczasowo.txt";
 
-    odczytywanyPlikTekstowy.open(NAZWA_PLIKU_Z_ADRESATAMI.c_str(), ios::in);
+    odczytywanyPlikTekstowy.open(pobierzNazwePliku().c_str(), ios::in);
 
     liniaZDanymiAdresata = zamienDaneAdresataNaLinieZDanymiOddzielonymiPionowymiKreskami(adresat);
 
@@ -187,11 +179,11 @@ void PlikZAdresatami::zaktualizujPlik(Adresat adresat, int idAdresata, string tr
     }
     odczytywanyPlikTekstowy.close();
 
-    remove(NAZWA_PLIKU_Z_ADRESATAMI.c_str());
-    rename(nazwaPlikuTymczasowego.c_str(), NAZWA_PLIKU_Z_ADRESATAMI.c_str());
+    remove(pobierzNazwePliku().c_str());
+    rename(nazwaPlikuTymczasowego.c_str(), pobierzNazwePliku().c_str());
 }
 
 string PlikZAdresatami::pobierzNazwePlikuZAdresatami()
 {
-    return NAZWA_PLIKU_Z_ADRESATAMI;
+    return pobierzNazwePliku();
 }
