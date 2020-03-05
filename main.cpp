@@ -30,8 +30,7 @@ int main()
                 ksiazkaAdresowa.rejestracjaUzytkownika();
                 break;
             case '2':
-                ksiazkaAdresowa.logowanieUzytkownika();
-                czyUzytkownikJestZalogowany = true;
+                czyUzytkownikJestZalogowany = ksiazkaAdresowa.logowanieUzytkownika();
                 break;
             case '3':
                 exit(0);
