@@ -7,7 +7,7 @@ bool PlikZAdresatami::dopiszAdresataDoPliku(string liniaZDanymiAdresata, string 
 
     if (plikTekstowy.good() == true)
     {
-        if (czyPlikJestPusty() == true)
+        if (czyPlikJestPusty(nazwaPliku) == true)
         {
             plikTekstowy << liniaZDanymiAdresata;
         }
@@ -157,6 +157,7 @@ void PlikZAdresatami::zaktualizujPlik(Adresat adresat, int idAdresata, string tr
         {
             getline(odczytywanyPlikTekstowy, liniaWOdczytywanymPliku);
             idAdresataZPliku = liniaWOdczytywanymPliku[0];
+
             if (idAdresata == atoi(idAdresataZPliku.c_str()))
             {
                 if (tryb == "edycja")

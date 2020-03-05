@@ -16,7 +16,7 @@ public:
     }
 
     string pobierzNazwePliku();
-    bool czyPlikJestPusty();
+    bool czyPlikJestPusty(string nazwa);
 };
 
 #endif

@@ -5,9 +5,10 @@ string PlikTekstowy::pobierzNazwePliku()
     return NAZWA_PLIKU;
 }
 
-bool PlikTekstowy::czyPlikJestPusty()
+bool PlikTekstowy::czyPlikJestPusty(string nazwa)
 {
-    if (ifstream(pobierzNazwePliku(), ios::ate).tellg())
+    fstream plikTekstowy;
+    if (ifstream(nazwa, ios::ate).tellg())
         return false;
     else
         return true;
