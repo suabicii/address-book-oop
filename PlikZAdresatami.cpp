@@ -175,6 +175,11 @@ void PlikZAdresatami::zaktualizujPlik(Adresat adresat, int idAdresata, string tr
                 {
                     // taktyczny komentarz
                 }
+                else
+                {
+                    cout << "Programista nie ustalil trybu, wiec nie wiem co robic. SMUTECZEG :(" << endl;
+                    Sleep(1500);
+                }
             }
             else
                 dopiszAdresataDoPliku(liniaWOdczytywanymPliku, nazwaPlikuTymczasowego);
