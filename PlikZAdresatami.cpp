@@ -5,9 +5,9 @@ bool PlikZAdresatami::dopiszAdresataDoPliku(string liniaZDanymiAdresata, string 
     fstream plikTekstowy;
     plikTekstowy.open(nazwaPliku.c_str(), ios::out | ios::app);
 
-    if (plikTekstowy.good() == true)
+    if (plikTekstowy.good())
     {
-        if (czyPlikJestPusty(nazwaPliku) == true)
+        if (czyPlikJestPusty(nazwaPliku))
         {
             plikTekstowy << liniaZDanymiAdresata;
         }
@@ -50,7 +50,7 @@ vector<Adresat> PlikZAdresatami::wczytajAdresatowZpliku(int idZalogowanegoUzytko
     fstream plikTekstowy;
     plikTekstowy.open(pobierzNazwePliku().c_str(), ios::in);
 
-    if (plikTekstowy.good() == true)
+    if (plikTekstowy.good())
     {
         while (getline(plikTekstowy, daneJednegoAdresataOddzielonePionowymiKreskami))
         {
@@ -146,6 +146,7 @@ void PlikZAdresatami::zaktualizujPlik(Adresat adresat, int idAdresata, string tr
     fstream odczytywanyPlikTekstowy;
     string liniaWOdczytywanymPliku, liniaZDanymiAdresata, idAdresataZPliku;
     string nazwaPlikuTymczasowego = pobierzNazwePliku().substr(0, pobierzNazwePliku().length() - 5) + "_tymczasowo.txt";
+    string liniaDoPominiecia;
 
     odczytywanyPlikTekstowy.open(pobierzNazwePliku().c_str(), ios::in);
 
@@ -166,7 +167,7 @@ void PlikZAdresatami::zaktualizujPlik(Adresat adresat, int idAdresata, string tr
                 }
                 else if (tryb == "usuwanie")
                 {
-                    // taktyczny komentarz
+                    liniaDoPominiecia = liniaWOdczytywanymPliku;
                 }
                 else
                 {
@@ -175,7 +176,14 @@ void PlikZAdresatami::zaktualizujPlik(Adresat adresat, int idAdresata, string tr
                 }
             }
             else
+            {
                 dopiszAdresataDoPliku(liniaWOdczytywanymPliku, nazwaPlikuTymczasowego);
+            }
+
+            if (liniaWOdczytywanymPliku != liniaDoPominiecia)
+            {
+                idOstatniegoAdresata = atoi(idAdresataZPliku.c_str());
+            }
         }
     }
     odczytywanyPlikTekstowy.close();
